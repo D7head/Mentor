@@ -1487,7 +1487,6 @@ class ChatBotApp:
                 elif self.snake_direction == "Right":
                     new_head = (head_x + 10, head_y)
 
-                # Check for collisions
                 if (new_head in self.snake or
                         new_head[0] < 0 or new_head[0] >= 400 or
                         new_head[1] < 0 or new_head[1] >= 400):
@@ -1496,7 +1495,6 @@ class ChatBotApp:
 
                 self.snake.insert(0, new_head)
 
-                # Check if food eaten
                 if new_head == self.food_pos:
                     self.score += 1
                     self.score_label.config(
@@ -1560,11 +1558,9 @@ class ChatBotApp:
                 paddle_a_pos = self.canvas.coords(self.paddle_a)
                 paddle_b_pos = self.canvas.coords(self.paddle_b)
 
-                # Ball collision with top and bottom
                 if ball_pos[1] <= 0 or ball_pos[3] >= 400:
                     self.ball_dy = -self.ball_dy
 
-                # Ball collision with paddles
                 if (ball_pos[0] <= paddle_a_pos[2] and
                         ball_pos[1] >= paddle_a_pos[1] and
                         ball_pos[3] <= paddle_a_pos[3]):
@@ -1574,7 +1570,6 @@ class ChatBotApp:
                       ball_pos[3] <= paddle_b_pos[3]):
                     self.ball_dx = -self.ball_dx
 
-                # Scoring
                 if ball_pos[0] <= 0:
                     self.score_b += 1
                     self.reset_ball()
@@ -1656,4 +1651,4 @@ class ChatBotApp:
 if __name__ == "__main__":
         root = tk.Tk()
         app = ChatBotApp(root)
-        root.mainloop()
+        root.mainloop() 
